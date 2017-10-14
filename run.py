@@ -67,6 +67,15 @@ def read_test(dirs):
         label[i][index] = 1
         #print(y[i],label[i])
     return np.array(x),np.array(label)
+def get_label(img,sess,cnn):#img shape:[img,img,img]
+    predict = sess.run(cnn.predict, feed_dict={cnn.x: img})
+    label=''
+    for i in range(len(img)):
+        temp=np.argwhere(predict[i]==1.0)
+        if(len(temp)==1):
+            index=int(np.argwhere(predict[i]==1.0))
+            label+=charset[index]
+        
 def label_img(testdir):#recognize images from an dir
     img_names = os.listdir(testdir)
     x = []
