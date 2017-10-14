@@ -1,0 +1,10 @@
+width=50
+height=50
+epoch=10000
+batch=256
+train_dir='train'
+test_dir='dark'
+pretrained_path='pretrained/model.ckpt-2'
+model_ckpt = 'weightfile/model.ckpt'
+charset='0123456789ABCDEFGHJKLMNPQRSTUVWXYZ'
+num_class=len(charset)
