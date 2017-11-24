@@ -32,9 +32,9 @@ class cnn_ocr:
 
     def loss_with_step(self):#may be exist some error
 
-        #safe_log=tf.clip_by_value(self.predict,1e-10,1e100)
+        safe_log=tf.clip_by_value(self.predict,1e-5,1e100)
 
-        cross_entropy = -tf.reduce_sum(self.y*tf.log(self.predict))
+        cross_entropy = -tf.reduce_sum(self.y*tf.log(safe_log))
         return cross_entropy
     def acc_cal(self):
         correct_prediction = tf.equal(tf.argmax(self.predict, 1), tf.argmax(self.y, 1))
