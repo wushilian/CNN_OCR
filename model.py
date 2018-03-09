@@ -38,5 +38,5 @@ class cnn_ocr:
         return cross_entropy
     def acc_cal(self):
         correct_prediction = tf.equal(tf.argmax(self.predict, 1), tf.argmax(self.y, 1))
-        accuracy = tf.reduce_mean(tf.cast(correct_prediction, "float"))
+        accuracy = tf.reduce_sum(tf.cast(correct_prediction, "float"))
         return accuracy
